@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form name="form">
+	<input type="text" name="id" placeholder="id">
+	<input type="text" name="name" placeholder="name">
+	<input type="text" name="password" placeholder="password">
+	<input type="text" name="profession" placeholder="profession">
+	<button onclick="addData()">增加数据</button>
+	</form>
+	
+	<table id="example" border="1">
+		<thead>
+			<th>序号</th>
+			<th>名字</th>
+			<th>密码</th>
+			<th>职位</th>
+			<th>操作</th>
+		</thead>
+		<tbody></tbody>
+	</table> 
+</body>
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+'use strict'
+window.onload = function(){
+	getData();
+}
+var getData = function() {
+	var html = "";
+	$("#example tbody").html("");
+	$.ajax({
+		url:"/listUsers",
+		type:'GET',
+		dataType:"json",
+		success:function(data){
+			for(var i=0;i<data.length;i++){
+				html  +=  '<tr>\
+				<td>'+data[i].id+'</td>\
+				<td>'+data[i].name+'</td>\
+				<td>'+data[i].password+'</td>\
+				<td>'+data[i].profession+'</td>\
+				<td><button onclick="delData('+data[i].id+')">删除</button></td>\
+				</tr>';	
+			}
+			$("#example tbody").html(html);
+		}
+	})
+}
+
+var delData = function(id){
+	$.ajax({
+		url: "/delUsers",
+		type: "POST",
+        data:{"id":id.toString()},
+        dataType:"json",
+        success: function(data){
+            console.log(data);
+            getData();
+        },
+        error: function(errorData, errorCode) {
+            console.log(errorCode);
+            console.log(errorData);
+        }
+	})
+}
+
+var addData = function(){
+	$.ajax({
+		url:"/addUsers",
+		type:"post",
+		data:{
+			  "name" : form.name.value,
+		      "password" : form.password.value,
+		      "profession" : form.profession.value,
+		      "id": form.id.value
+		},
+		dataType:"json",
+		success:function(data){
+			console.log(data);
+		}
+	})
+}
+</script>
+</html>

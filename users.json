@@ -1,0 +1,26 @@
+[
+    {
+        "name": "ramesh",
+        "password": "password3",
+        "profession": "clerk",
+        "id": 3
+    },
+    {
+        "name": "mohit",
+        "password": "password4",
+        "profession": "teacher",
+        "id": "4"
+    },
+    {
+        "name": "as",
+        "password": "1",
+        "profession": "1",
+        "id": "1"
+    },
+    {
+        "name": "as",
+        "password": "12",
+        "profession": "12",
+        "id": "2"
+    }
+]
