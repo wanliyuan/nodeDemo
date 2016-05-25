@@ -8,3 +8,5 @@ There are several simple server implementations included. They all serve static 
 npm install node server.js
 
 And visit http://localhost:8081/index.html
+
+试试
