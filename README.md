@@ -1,11 +1,9 @@
-#nodeDemo
-This is a example from the node demo.
-
-#To use
-There are several simple server implementations included. They all serve static files from public/ and handle requests to /listUsers to fetch or add data. Start a server with one of the following:
+#simpleDemo
+这是一个简单的用node写服务端操作json数据,配合前台使用ajax
 
 #Node
-npm install node server.js
+npm install
+node server.js
 
 And visit http://localhost:8081/index.html
 
